@@ -1,6 +1,10 @@
-
 {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-    }
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.gotoLocation.multipleDefinitions": "goto",
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
   }
+}
