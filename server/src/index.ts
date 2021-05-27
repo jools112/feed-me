@@ -8,9 +8,7 @@ const main = (): void => {
   });
 
   app.listen(8000, () => {
-    console.log(
-      "server is listening at http://localhost:8000. lets gooo!"
-    );
+    console.log("server is listening at http://localhost:8000. lets gooo!");
   });
 };
 
