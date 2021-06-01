@@ -1,4 +1,5 @@
 import express from "express";
+import { ReviewEntity } from "./entities/review";
 
 const { Pool, Client } = require("pg");
 
@@ -14,10 +15,11 @@ const main = (): void => {
   const app = express();
 
   app.get("/", (_, res) => {
-    pool.query("SELECT * from users", (err, res2) => {
+    pool.query("SELECT * from reviews", (err, res2) => {
       pool.end();
+      const ref: ReviewEntity = res2.rows[0];
       res.json(res2.rows);
-      // console.log(res.rows);
+      console.log(ref.coordinate.y);
     });
   });
 
