@@ -4,8 +4,10 @@ export interface ReviewModel {
   name: string;
   address: string;
   created: string;
-  serviceRating: number;
   qualityRating: number;
+  serviceRating: number;
+  atmosphereRating: number;
+  valueRating: number;
   freeText: string;
 }
 
