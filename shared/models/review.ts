@@ -1,3 +1,7 @@
+interface Coordinate {
+  x: number;
+  y: number;
+}
 export interface ReviewModel {
   id: number;
   coordinate: Coordinate;
@@ -9,9 +13,4 @@ export interface ReviewModel {
   atmosphereRating: number;
   valueRating: number;
   freeText: string;
-}
-
-interface Coordinate {
-  x: number;
-  y: number;
 }
