@@ -9,8 +9,10 @@ export interface ReviewEntity {
   name: string;
   address: string;
   created: string;
-  lastUpdated: string;
-  serviceRating: number;
-  qualityRating: number;
-  freeText: string;
+  last_updated: string;
+  service_rating: number;
+  quality_rating: number;
+  atmosphere_rating: number;
+  value_rating: number;
+  free_text: string;
 }
