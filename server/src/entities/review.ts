@@ -1,3 +1,8 @@
+interface Coordinate {
+  x: number;
+  y: number;
+}
+
 export interface ReviewEntity {
   id: number;
   coordinate: Coordinate;
@@ -8,9 +13,4 @@ export interface ReviewEntity {
   serviceRating: number;
   qualityRating: number;
   freeText: string;
-}
-
-export interface Coordinate {
-  x: number;
-  y: number;
 }
