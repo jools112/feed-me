@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AddIcon from "@material-ui/icons/Add";
+import { fetchClick } from "../main/store/main-actions";
 
 export const Main = () => {
   return (
@@ -46,8 +47,12 @@ export const Main = () => {
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={6}>
-                <Button color="primary" variant="contained">
-                  button of impending doom
+                <Button
+                  color="primary"
+                  onClick={() => fetchClick()}
+                  variant="contained"
+                >
+                  fetch reviews
                 </Button>
               </Grid>
               <Grid item xs={6}>
