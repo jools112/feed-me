@@ -6,14 +6,19 @@ import {
   Container,
   Fab,
   Grid,
+  List,
+  ListItem,
+  ListItemText,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AddIcon from "@material-ui/icons/Add";
 import { fetchClick } from "../main/store/main-actions";
+import { useMainStore } from "./store/main-store";
 
 export const Main = () => {
+  const store = useMainStore();
   return (
     <Container maxWidth="md">
       <AppBar position="relative">
@@ -61,6 +66,17 @@ export const Main = () => {
                 </Button>
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <List>
+              {store.reviews.map((review, index) => {
+                return (
+                  <ListItem key={index}>
+                    <ListItemText>📝 {review.name}</ListItemText>
+                  </ListItem>
+                );
+              })}
+            </List>
           </Grid>
           <Grid item xs={12}>
             <Grid container justify="flex-end">

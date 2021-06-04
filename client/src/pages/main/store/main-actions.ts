@@ -8,8 +8,6 @@ export const fetchClick = () => {
     "http://localhost:8000/reviews"
   );
   promise.then((response) => {
-    //fetchReviews(response.data);
-    console.log("jetelyckad hämt");
     setState({ reviews: response.data });
   });
 };

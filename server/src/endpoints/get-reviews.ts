@@ -6,7 +6,6 @@ import { connection } from "../utils/connection";
 
 export const getReviews: RequestHandler = (req, res) => {
   connection.query<ReviewEntity>("SELECT * from reviews", (err, result) => {
-    connection.end();
     const formattedRows: Array<ReviewModel> = result.rows.map((row) => ({
       id: row.id,
       name: row.name,
@@ -22,5 +21,6 @@ export const getReviews: RequestHandler = (req, res) => {
       freeText: row.free_text,
     }));
     res.json(formattedRows);
+    // connection.end();
   });
 };
