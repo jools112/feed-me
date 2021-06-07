@@ -14,8 +14,9 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AddIcon from "@material-ui/icons/Add";
-import { fetchClick } from "../main/store/main-actions";
+import { fetchClick, selectReview } from "../main/store/main-actions";
 import { useMainStore } from "./store/main-store";
+import { ReviewDialog } from "./review-dialog";
 
 export const Main = () => {
   const store = useMainStore();
@@ -71,12 +72,17 @@ export const Main = () => {
             <List>
               {store.reviews.map((review, index) => {
                 return (
-                  <ListItem key={index}>
-                    <ListItemText>📝 {review.name}</ListItemText>
+                  <ListItem button key={index}>
+                    <ListItemText onClick={() => selectReview(review)}>
+                      📝 {review.name}
+                    </ListItemText>
                   </ListItem>
                 );
               })}
             </List>
+          </Grid>
+          <Grid item xs={12}>
+            <ReviewDialog />
           </Grid>
           <Grid item xs={12}>
             <Grid container justify="flex-end">

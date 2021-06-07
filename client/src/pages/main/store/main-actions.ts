@@ -12,4 +12,8 @@ export const fetchClick = () => {
   });
 };
 
+export const selectReview = (review: ReviewModel) => {
+  setState({ showDialog: true, selectedReview: review });
+};
+
 //const fetchReviews = (fetchedData: Array<ReviewModel>) =>
