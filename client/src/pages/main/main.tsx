@@ -47,7 +47,8 @@ export const Main = () => {
           feed me!
         </Typography>
         <Typography align="center" color="textSecondary" variant="h5" paragraph>
-          Going for lunch?? Or a coffee? DO NOT WORRY!!
+          Going for lunch?? Or a coffee? Explore some nice options by fetching
+          the reviews.
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>

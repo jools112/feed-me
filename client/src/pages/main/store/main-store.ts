@@ -4,13 +4,13 @@ import { ReviewModel } from "@shared/models/review";
 interface MainState {
   reviews: Array<ReviewModel>;
   selectedReview: ReviewModel | undefined;
-  showDialog: boolean;
+  viewMore: boolean;
 }
 
 const initialState: MainState = {
   reviews: [],
   selectedReview: undefined,
-  showDialog: false,
+  viewMore: false,
 };
 
 export const useMainStore = create<MainState>(() => initialState);

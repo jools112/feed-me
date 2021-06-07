@@ -13,7 +13,14 @@ export const fetchClick = () => {
 };
 
 export const selectReview = (review: ReviewModel) => {
-  setState({ showDialog: true, selectedReview: review });
+  setState({ selectedReview: review });
 };
 
+export const toggleViewMore = () => {
+  setState({ viewMore: !getState().viewMore });
+};
+
+export const closeReview = () => {
+  setState({ selectedReview: undefined });
+};
 //const fetchReviews = (fetchedData: Array<ReviewModel>) =>
