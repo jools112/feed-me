@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AddIcon from "@material-ui/icons/Add";
+import { LeafletMap } from "../../components/leaflet-map";
 
 export const Main = () => {
   return (
@@ -56,6 +57,9 @@ export const Main = () => {
                 </Button>
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <LeafletMap text="ostpaj" />
           </Grid>
           <Grid item xs={12}>
             <Grid container justify="flex-end">
