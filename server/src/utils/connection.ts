@@ -5,5 +5,5 @@ export const connection = new Pool({
   host: "localhost",
   database: "feed-me",
   password: "",
-  port: "5432",
+  port: 5432,
 });

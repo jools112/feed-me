@@ -5,10 +5,8 @@ import { ReviewEntity } from "@root/entities/review";
 import { connection } from "../utils/connection";
 
 export const getReviews: RequestHandler = (req, res) => {
-  connection.query("SELECT * from reviews", (err, { rows }) => {
-    connection.end();
-    const reviews: Array<ReviewEntity> = rows;
-    const formattedRows: Array<ReviewModel> = reviews.map((row) => ({
+  connection.query<ReviewEntity>("SELECT * from reviews", (err, result) => {
+    const formattedRows: Array<ReviewModel> = result.rows.map((row) => ({
       id: row.id,
       name: row.name,
       address: row.address,
@@ -23,5 +21,6 @@ export const getReviews: RequestHandler = (req, res) => {
       freeText: row.free_text,
     }));
     res.json(formattedRows);
+    // connection.end();
   });
 };
