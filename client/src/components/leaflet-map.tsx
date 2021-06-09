@@ -1,93 +1,48 @@
 import L from "leaflet";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import create from "zustand";
 import "leaflet/dist/leaflet.css";
-import { Box, Button, Icon } from "@material-ui/core";
-import { AcUnit } from "@material-ui/icons";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { ReviewModel } from "@shared/models/review";
+import { useMainStore } from "../pages/main/store/main-store";
+import { selectReview } from "../pages/main/store/main-actions";
 
-interface Props {
-  text: string;
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+});
 
-  //TODO readonly/write
-}
+L.Marker.prototype.options.icon = DefaultIcon;
 
-interface Test {
-  value: string;
-}
-
-const useTestStore = create<Test>(() => ({
-  value: "loading...",
-}));
-
-export const LeafletMap: React.FC<Props> = ({ text }) => {
-  const ref = useRef(null);
-  const value = useTestStore((state) => state.value);
-  // TODO: Origin position & last position~
-  const [position, setPosition] = useState<[number, number]>([0, 0]);
-
-  useEffect(() => {
-    const fetch = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      useTestStore.setState({ value: "ostpaj" });
-    };
-
-    navigator.geolocation.getCurrentPosition(
-      (location) => {
-        setPosition([location.coords.latitude, location.coords.longitude]);
-      },
-      undefined,
-      { enableHighAccuracy: true }
-    );
-
-    fetch();
-  }, []);
-
-  console.log(
-    position
-    //ref.current?.leafletElement.getBounds().contains(position)
-  );
+export const LeafletMap: React.FC = () => {
+  const reviews = useMainStore((state) => state.reviews);
+  console.log(reviews);
   return (
     <>
       <div style={{ width: "100%", height: "70vh" }}>
         <MapContainer
-          // ref={ref}
           center={[59.33258, 18.0649]}
           zoom={13}
           style={{
             height: "100%",
             width: "100%",
           }}
-          onmoveend={(event: any) => {
-            console.log(event.target._lastCenter);
-            setPosition([
-              event.target._lastCenter.lat,
-              event.target._lastCenter.lng,
-            ]);
-          }}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup.
-              <br />
-              Easily customizable.
-            </Popup>
-          </Marker>
+          {reviews.map((review, index) => {
+            return (
+              <Marker
+                eventHandlers={{ click: () => selectReview(review) }}
+                position={[review.coordinate.x, review.coordinate.y]}
+              ></Marker>
+            );
+          })}
         </MapContainer>
       </div>
-      <Box p={2} display="flex" alignItems="center">
-        <Icon>
-          <AcUnit />
-        </Icon>
-        <Box mx={2}>test {value}</Box>
-        <Button variant="contained" color="secondary">
-          i want cookies
-        </Button>
-      </Box>
     </>
   );
 };

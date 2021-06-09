@@ -71,22 +71,15 @@ export const Main = () => {
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <LeafletMap text="ostpaj" />
-            <List>
-              {store.reviews.map((review, index) => {
-                return (
-                  <ListItem button key={index}>
-                    <ListItemText onClick={() => selectReview(review)}>
-                      📝 {review.name}
-                    </ListItemText>
-                  </ListItem>
-                );
-              })}
-            </List>
+            <LeafletMap />
           </Grid>
-          <Grid item xs={12}>
-            <ReviewDialog />
-          </Grid>
+          {store.selectedReview ? (
+            <Grid item xs={12}>
+              <ReviewDialog />
+            </Grid>
+          ) : (
+            "please click map icon nowwww"
+          )}
           <Grid item xs={12}>
             <Grid container justify="flex-end">
               <Grid item>
