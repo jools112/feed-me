@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Container,
+  createMuiTheme,
   Fab,
   Grid,
   List,
@@ -21,6 +22,7 @@ import { ReviewDialog } from "./review-dialog";
 
 export const Main = () => {
   const store = useMainStore();
+
   return (
     <Container maxWidth="md">
       <AppBar position="relative">
@@ -51,47 +53,56 @@ export const Main = () => {
           Going for lunch?? Or a coffee? Explore some nice options by fetching
           the reviews.
         </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <Button
-                  color="primary"
-                  onClick={() => fetchClick()}
-                  variant="contained"
-                >
-                  fetch reviews
-                </Button>
-              </Grid>
-              <Grid item xs={6}>
-                <Button color="secondary" variant="outlined">
-                  button of belated doom
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <LeafletMap />
-          </Grid>
-          {store.selectedReview ? (
+        <Box position="relative">
+          <Grid container spacing={2}>
             <Grid item xs={12}>
-              <ReviewDialog />
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <Button
+                    color="primary"
+                    onClick={() => fetchClick()}
+                    variant="contained"
+                  >
+                    fetch reviews
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button color="secondary" variant="outlined">
+                    button of belated doom
+                  </Button>
+                </Grid>
+              </Grid>
             </Grid>
-          ) : (
-            "please click map icon nowwww"
-          )}
-          <Grid item xs={12}>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Box position="fixed" bottom={32}>
-                  <Fab color="secondary">
-                    <AddIcon fontSize="large" />
-                  </Fab>
+            <Grid item xs={12}>
+              <LeafletMap />
+            </Grid>
+            {store.selectedReview ? (
+              <Grid item xs={12}>
+                <Box
+                  position="absolute"
+                  bottom={16}
+                  zIndex={1500}
+                  style={{ width: "100%" }}
+                >
+                  <ReviewDialog />
                 </Box>
               </Grid>
+            ) : (
+              "please click map icon nowwww"
+            )}
+            <Grid item xs={12}>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <Box position="fixed" bottom={32}>
+                    <Fab color="secondary">
+                      <AddIcon fontSize="large" />
+                    </Fab>
+                  </Box>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Container>
     </Container>
   );
