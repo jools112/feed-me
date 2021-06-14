@@ -5,6 +5,7 @@ import { addReview } from "./endpoints/add-review";
 
 const main = (): void => {
   const app = express();
+  app.use(express.json());
   app.use(cors());
   app.get("/reviews", getReviews);
   app.post("/reviews", addReview);
