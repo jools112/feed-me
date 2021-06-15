@@ -78,12 +78,7 @@ export const Main = () => {
             </Grid>
             {store.selectedReview ? (
               <Grid item xs={12}>
-                <Box
-                  position="absolute"
-                  bottom={16}
-                  zIndex={1500}
-                  style={{ width: "100%" }}
-                >
+                <Box position="absolute" bottom={16} zIndex={1500} width="100%">
                   <ReviewDialog />
                 </Box>
               </Grid>
