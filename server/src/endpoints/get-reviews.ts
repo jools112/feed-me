@@ -2,10 +2,10 @@ import { RequestHandler } from "express";
 import { formatISO } from "date-fns";
 import { ReviewModel } from "@shared/models/review";
 import { ReviewEntity } from "@root/entities/review";
-import { client } from "../utils/client";
+import { dbClient } from "../utils/client";
 
 export const getReviews: RequestHandler = (req, response) => {
-  client
+  dbClient
     .query<ReviewEntity>("SELECT * from reviews")
     .then((data) => {
       const formattedRows: Array<ReviewModel> = data.rows.map((row) => ({

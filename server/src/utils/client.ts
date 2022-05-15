@@ -1,6 +1,6 @@
 import { Client } from "pg";
 
-export const client = new Client({
+export const dbClient = new Client({
   user: "postgres",
   host: "localhost",
   database: "feed-me",
@@ -8,4 +8,4 @@ export const client = new Client({
   port: 5432,
 });
 
-client.connect();
+dbClient.connect();
