@@ -1,9 +1,11 @@
-import { Pool } from "pg";
+import { Client } from "pg";
 
-export const connection = new Pool({
+export const dbClient = new Client({
   user: "postgres",
   host: "localhost",
   database: "feed-me",
   password: "",
   port: 5432,
 });
+
+dbClient.connect();
