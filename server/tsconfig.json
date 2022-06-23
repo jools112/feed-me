@@ -13,13 +13,13 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": true
+    "removeComments": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*": ["../../shared/*"],
+      "@root/*": ["./*"]
+    }
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }
