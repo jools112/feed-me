@@ -5,6 +5,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
     "airbnb",
     "prettier",
     "prettier/react",
@@ -13,5 +14,14 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+  },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
   },
 };
